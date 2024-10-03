@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1 (Python 3.10.12 on linux)" generated="2024-10-03T15:23:09.044754" rpa="false" schemaversion="5">
+<suite id="s1" name="Horadoqa" source="/home/rfahham/projetos/app-horadoqa/robot/horadoqa.robot">
+<test id="s1-t1" name="Cenário1: Enviar dados pelo site" line="36">
+<kw name="Given que o usuário acessou o site">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-10-03T15:23:09.192890" level="INFO">Opening browser 'chrome' to base url 'http://44.212.65.111/'.</msg>
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-10-03T15:23:09.192658" elapsed="2.566499"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-10-03T15:23:16.760448" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-10-03T15:23:11.759377" elapsed="5.001557"/>
+</kw>
+<status status="PASS" start="2024-10-03T15:23:09.192231" elapsed="7.569403"/>
+</kw>
+<kw name="And inseriu os dados pessoais">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-10-03T15:23:16.765924" level="INFO">Typing text 'Hora do QA' into text field '//*[@id="root"]/div/div/form/div[1]/label/input'.</msg>
+<arg>//*[@id="root"]/div/div/form/div[1]/label/input</arg>
+<arg>Hora do QA</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-03T15:23:16.764484" elapsed="0.167664"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-10-03T15:23:16.932786" level="INFO">Typing text 'horadoqa@gmail.com' into text field '//*[@id="root"]/div/div/form/div[2]/label/input'.</msg>
+<arg>//*[@id="root"]/div/div/form/div[2]/label/input</arg>
+<arg>horadoqa@gmail.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-03T15:23:16.932415" elapsed="0.113201"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-10-03T15:23:17.046179" level="INFO">Typing text '219876543210' into text field '//*[@id="root"]/div/div/form/div[3]/label/input'.</msg>
+<arg>//*[@id="root"]/div/div/form/div[3]/label/input</arg>
+<arg>219876543210</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-03T15:23:17.045866" elapsed="0.105966"/>
+</kw>
+<status status="PASS" start="2024-10-03T15:23:16.762951" elapsed="0.389051"/>
+</kw>
+<kw name="And clicar em &quot;Enviar&quot;">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-10-03T15:23:17.153184" level="INFO">Clicking element '//*[@id="root"]/div/div/form/button'.</msg>
+<arg>//*[@id="root"]/div/div/form/button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-03T15:23:17.152782" elapsed="0.081377"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-10-03T15:23:22.235365" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-10-03T15:23:17.234481" elapsed="5.001139"/>
+</kw>
+<status status="PASS" start="2024-10-03T15:23:17.152390" elapsed="5.083471"/>
+</kw>
+<kw name="Then o site será fechado">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-10-03T15:23:22.236998" elapsed="0.071454"/>
+</kw>
+<status status="PASS" start="2024-10-03T15:23:22.236458" elapsed="0.072306"/>
+</kw>
+<status status="PASS" start="2024-10-03T15:23:09.191097" elapsed="13.118248"/>
+</test>
+<status status="PASS" start="2024-10-03T15:23:09.045746" elapsed="13.264766"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Horadoqa">Horadoqa</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

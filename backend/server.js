@@ -5,11 +5,12 @@ const { Pool } = require('pg');
 
 const app = express();
 const port = 5000;
+const ip = "54.174.75.247";
 
 // Configurar o Pool do PostgreSQL
 const pool = new Pool({
   user: 'horadoqa',
-  host: '44.212.65.111',
+  host: ip,
   database: 'horadoqa',
   password: 'horadoqa5474',
   port: 5432,
@@ -39,5 +40,5 @@ app.post('/api/cadastro', async (req, res) => {
 
 // Iniciar o servidor
 app.listen(port, () => {
-  console.log(`Servidor rodando em http://44.212.65.111:${port}`);
+  console.log(`Servidor rodando em http://${ip}:${port}`);
 });

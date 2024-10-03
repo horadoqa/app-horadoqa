@@ -49,10 +49,29 @@ Basic details
     VPC: Padrão
 
     Inbound rules
-        Type: Custom TCP
-        Source Type: Qualquer local-IPv4
+        Type: HTTP
+        Protocol: TCP
+        Source: Custom
         Port Range: 80
         Description: Acesso app-horadoqa para o mundo
+        
+        Type: HTTPS
+        Protocol: TCP
+        Source: Custom
+        Port Range: 443
+        Description: Acesso app-horadoqa para o mundo
+
+        Type: Custom TCP
+        Protocol: TCP
+        Source: Custom
+        Port Range: 3000
+        Description: Acesso app-horadoqa para o mundo
+        
+        Type: Custom TCP
+        Protocol: TCP
+        Source: Custom
+        Port Range: 5000
+        Description: Acesso ao Backend
 
     Regras de saída
         Type: TCP personalizado
@@ -65,7 +84,6 @@ Basic details
 ```bash
 ./validar_recursos_zona_a.sh
 
-./validar_recursos_zona_a.sh 
 [OK] Tudo certo com a VPC
 [OK] Tudo certo com a Subnet
 [OK] Security Group app-horadoqa foi criado

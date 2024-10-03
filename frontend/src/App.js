@@ -8,12 +8,13 @@ function App() {
   const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
   const [message, setMessage] = useState({ text: '', type: '' }); // Estado para gerenciar a mensagem e o tipo
-
+  const ip = "54.174.75.247";
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://44.212.65.111:5000/api/cadastro', {
+      const response = await axios.post(`http://${ip}:5000/api/cadastro`, {
         name,
         email,
         telefone,
