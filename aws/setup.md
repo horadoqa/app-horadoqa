@@ -83,7 +83,7 @@ Basic details
 
 Clicar na instância criada `app-horadoqa` e depois em Conectar. 
 
-Procurar por Gerenciador de sessões e finalmente clicar em conectar
+Procurar por Session Manager e finalmente clicar em conectar
 
 Trocar para o usuário ec2-user
 
@@ -115,7 +115,7 @@ Docker Compose version v2.23.3
 Clonar o projeto
 
 ```bash
-git clone hgit@github.com:horadoqa/app-horadoqa.git
+git clone git@github.com:horadoqa/app-horadoqa.git
 ```
 
 Na pasta app-horadoqa/Dockerfile
