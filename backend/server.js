@@ -23,6 +23,8 @@ app.use(bodyParser.json());
 app.post('/api/cadastro', async (req, res) => {
   const { name, email, telefone } = req.body;
 
+  console.log('Dados recebidos:', req.body); // Log dos dados recebidos
+
   try {
     const result = await pool.query(
       'INSERT INTO usuarios (name, email, telefone) VALUES ($1, $2, $3)',
@@ -30,7 +32,7 @@ app.post('/api/cadastro', async (req, res) => {
     );
     res.status(201).send('Usuário criado com sucesso');
   } catch (error) {
-    console.error(error);
+    console.error('Erro ao inserir no banco:', error.message); // Log do erro
     res.status(500).send('Erro ao criar usuário');
   }
 });

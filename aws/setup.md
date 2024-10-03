@@ -129,6 +129,13 @@ docker compose up -d
  ✔ Container app-horadoqa-backend-1   Started 0.0s
 ```
 
+## Após qualquer mudaça
+
+```bash
+docker compose down
+docker-compose up -d
+```
+
 ## Acessar via browser
 
 http://<IP Público>
