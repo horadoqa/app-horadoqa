@@ -5,7 +5,7 @@ const { Pool } = require('pg');
 
 const app = express();
 const port = 5000;
-const ip = "54.174.75.247";
+const ip = "localhost";
 
 // Configurar o Pool do PostgreSQL
 const pool = new Pool({
@@ -35,6 +35,17 @@ app.post('/api/cadastro', async (req, res) => {
   } catch (error) {
     console.error('Erro ao inserir no banco:', error.message); // Log do erro
     res.status(500).send('Erro ao criar usuário');
+  }
+});
+
+// Rota para listar os usuários
+app.get('/api/usuarios', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM usuarios');
+    res.json(result.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Erro ao buscar usuários');
   }
 });
 

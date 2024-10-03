@@ -153,7 +153,8 @@ CREATE TABLE
 ## Inserir registro
 
 ```bash
-INSERT INTO usuarios (name, email, telefone) VALUES ('João Silva', 'joao.silva@example.com', '219876543210');
+INSERT INTO usuarios (name, email, telefone) VALUES ('Ricardo Fahham', 'rfahham@hotmail.com', '219876543210');
+
 INSERT 0 1
 ```
 
@@ -169,3 +170,4 @@ SELECT * FROM usuarios;
 DROP TABLE IF EXISTS usuarios;
 ```
 
+curl -X POST http://54.174.75.247:5000/api/cadastro -H "Content-Type: application/json" -d '{"name": "Nome", "email": "email@example.com", "telefone": "1234567890"}'

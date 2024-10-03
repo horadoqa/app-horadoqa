@@ -73,6 +73,12 @@ Basic details
         Port Range: 5000
         Description: Acesso ao Backend
 
+        Type: PostgreSQL
+        Protocol: TCP
+        Source: Custom
+        Port Range: 5432
+        Description: Acesso ao Backend
+
     Regras de saída
         Type: TCP personalizado
         Source Type: Personalizado
@@ -148,13 +154,14 @@ docker compose up -d
 
 ```bash
 docker compose down
-docker-compose up -d
+docker compose up -d
 ```
 
 ## Acessar via browser
 
 http://<IP Público>
 
+```bash
 curl -I http://<IP Público>
 
 HTTP/1.1 200 OK
@@ -166,3 +173,16 @@ Last-Modified: Thu, 03 Oct 2024 18:57:51 GMT
 Connection: keep-alive
 ETag: "66fee92f-253"
 Accept-Ranges: bytes
+```
+
+## Verificar a conexão do FE com o BE
+
+docker ps -a
+
+```bash
+docker exec -it <backend_container_id> sh
+
+curl http://frontend:80
+```
+
+
