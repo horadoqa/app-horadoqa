@@ -9,7 +9,7 @@ const port = 5000;
 // Configurar o Pool do PostgreSQL
 const pool = new Pool({
   user: 'horadoqa',
-  host: 'localhost',
+  host: '44.212.65.111',
   database: 'horadoqa',
   password: 'horadoqa5474',
   port: 5432,
@@ -39,5 +39,5 @@ app.post('/api/cadastro', async (req, res) => {
 
 // Iniciar o servidor
 app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`);
+  console.log(`Servidor rodando em http://44.212.65.111:${port}`);
 });
