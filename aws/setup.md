@@ -108,23 +108,20 @@ Trocar para o usuário ec2-user
 ```bash
 sudo su ec2-user
 ```
-[ec2-user@ip-172-31-95-38 ~]$
+[ec2-user@<IP PRIVADO> ~]$
 
 ## Acessar a home
 
-cd /home/ec2-user
-
-## Verificar se o docker está instalado
-
 ```bash
-docker --version
-Docker version 25.0.5, build 5dc9bcc
+cd /home/ec2-user
 ```
 
-## Verificar se o docker compose está instalado
+## Verificar se o docker e o docker compose estão instalados
 
 ```bash
-docker compose version
+docker --version && docker compose version
+
+Docker version 25.0.5, build 5dc9bcc
 Docker Compose version v2.23.3
 ```
 
@@ -133,10 +130,10 @@ Docker Compose version v2.23.3
 Clonar o projeto
 
 ```bash
-git clone git@github.com:horadoqa/app-horadoqa.git
+git clone https://github.com/horadoqa/app-horadoqa.git
 ```
 
-Na pasta app-horadoqa/Dockerfile
+Na pasta app-horadoqa
 
 ```bash
 docker compose up -d
@@ -147,7 +144,7 @@ docker compose up -d
  ✔ Container app-horadoqa-backend-1   Started 0.0s
 ```
 
-## Após qualquer mudaça
+## Após qualquer mudança
 
 ```bash
 docker compose down
@@ -157,3 +154,15 @@ docker-compose up -d
 ## Acessar via browser
 
 http://<IP Público>
+
+curl -I http://<IP Público>
+
+HTTP/1.1 200 OK
+Server: nginx/1.27.2
+Date: Thu, 03 Oct 2024 18:58:40 GMT
+Content-Type: text/html
+Content-Length: 595
+Last-Modified: Thu, 03 Oct 2024 18:57:51 GMT
+Connection: keep-alive
+ETag: "66fee92f-253"
+Accept-Ranges: bytes

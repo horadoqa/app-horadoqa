@@ -4,7 +4,7 @@ Library  SeleniumLibrary
 
 *** Variables ***
 
-${url}    http://
+${url}    http://54.174.75.247/
 ${frameworks}    //*[@id="select-itens"]/option[3]
 ${verificação}    //h1[contains(text(), "Obrigado por sua participação !!!")]
 

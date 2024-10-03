@@ -9,10 +9,10 @@ const ip = "54.174.75.247";
 
 // Configurar o Pool do PostgreSQL
 const pool = new Pool({
-  user: 'horadoqa',
-  host: ip,
+  user: 'postgres',
+  host: 'db',
   database: 'horadoqa',
-  password: 'horadoqa5474',
+  password: 'senha@db',
   port: 5432,
 });
 
