@@ -22,7 +22,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t horadoqa/horadoqa-backend:v1.0.0 .
+          frontend/docker build -t horadoqa/horadoqa-backend:v1.0.0 .
 
       - name: Push Docker image
         run: |
