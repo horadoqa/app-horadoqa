@@ -65,9 +65,10 @@ Basic details
 ```bash
 ./validar_recursos_zona_a.sh
 
+./validar_recursos_zona_a.sh 
 [OK] Tudo certo com a VPC
 [OK] Tudo certo com a Subnet
-[OK] Security Group bia-dev foi criado
+[OK] Security Group app-horadoqa foi criado
  [OK] Regra de entrada está ok
  [OK] Regra de saída está correta
 [OK] Tudo certo com a role 'role-acesso-ssm'
