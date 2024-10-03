@@ -13,7 +13,7 @@ function App() {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/api/cadastro', {
+      const response = await axios.post('http://44.212.65.111:5000/api/cadastro', {
         name,
         email,
         telefone,
