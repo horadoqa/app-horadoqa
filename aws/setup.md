@@ -123,12 +123,12 @@ Na pasta app-horadoqa/Dockerfile
 ```bash
 docker compose up -d
 
-✔ Network bia_default  Created  0.2s
-✔ Volume "bia_db"      Created  0.0s
-✔ Container database   Started  0.1s
-✔ Container bia        Started  0.0s
+ ✔ Network app-horadoqa_default       Created 0.2s
+ ✔ Container app-horadoqa-frontend-1  Started 0.1s
+ ✔ Container app-horadoqa-db-1        Started 0.1s
+ ✔ Container app-horadoqa-backend-1   Started 0.0s
 ```
 
 ## Acessar via browser
 
-Pegar o IP Público
+http://<IP Público>
