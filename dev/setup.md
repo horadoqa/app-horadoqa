@@ -3,7 +3,7 @@
 ## Executando em ambiente DEV (Local)
 
 ´´´bash
-cd dev/frontend
+cd dev
 ´´´
 
 ´´´bash
@@ -133,33 +133,26 @@ Keep-Alive: timeout=5
 
 ´´´bash
 docker logs dev-backend-1
+
 Servidor rodando em http://localhost:5000
-Erro ao conectar ao banco de dados: Error: connect ECONNREFUSED 172.18.0.2:5432
+Erro ao conectar ao banco de dados: Error: connect ECONNREFUSED 172.18.0.3:5432
     at /app/node_modules/pg-pool/index.js:45:11
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
   errno: -111,
   code: 'ECONNREFUSED',
   syscall: 'connect',
-  address: '172.18.0.2',
+  address: '172.18.0.3',
   port: 5432
 }
-Servidor rodando em http://localhost:5000
-Conectado ao banco de dados com sucesso
 Dados recebidos: {
-  name: 'Ricardo Fahham',
-  email: 'rfahham@hotmail.com',
-  telefone: '21980025474'
-}
-Erro ao inserir no banco: relation "usuarios" does not exist
-Dados recebidos: {
-  name: 'Ricardo Fahham',
-  email: 'rfahham@hotmail.com',
-  telefone: '21980025474'
+  name: 'Hora do QA',
+  email: 'horadoqa@gmail.com',
+  telefone: '219876543210'
 }
 Dados recebidos: {
-  name: 'Alessandra Miranda',
-  email: 'alesmiranda@hotmail.com',
-  telefone: '21981836521'
+  name: 'Hora do QA',
+  email: 'horadoqa@gmail.com',
+  telefone: '219876543210'
 }
 ´´´
 
@@ -175,12 +168,12 @@ docker logs dev-db-1
 curl http://localhost:5000/api/usuarios | jq
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100   269  100   269    0     0  30299      0 --:--:-- --:--:-- --:--:-- 33625
+100   169  100   169    0     0  17679      0 --:--:-- --:--:-- --:--:-- 18777
 [
   {
     "id": 1,
-    "name": "test exemplo",
-    "email": "test@exemplo.com",
+    "name": "Hora do QA",
+    "email": "horadoqa@gmail.com",
     "telefone": "219876543210"
   },
   {
@@ -196,6 +189,12 @@ curl http://localhost:5000/api/usuarios | jq
 
 ´´´bash
 docker stop <CONTAINER ID>
+´´´
+
+## Apagar containers
+
+´´´bash
+docker rm <CONTAINER ID>
 ´´´
 
 ## Apagar imagens
