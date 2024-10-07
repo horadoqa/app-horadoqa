@@ -1,8 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/backend/node_modules
-/frontend/node_modules
+dev/backend/node_modules
+dev/frontend/node_modules
+dev/database/node_modules
 */node_modules
 /.pnp
 .pnp.js
