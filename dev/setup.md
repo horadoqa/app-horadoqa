@@ -3,6 +3,13 @@
 ## Executando em ambiente DEV (Local)
 
 ´´´bash
+cd dev/frontend
+
+docker-compose up --build
+docker-compose up -d
+´´´
+
+´´´bash
 docker compose up -d
 
  ✔ Container dev-frontend-1  Running   0.0s 
@@ -10,90 +17,170 @@ docker compose up -d
  ✔ Container dev-backend-1   Started   7.1s  
 ´´´
 
+´´´bash
+docker images
+REPOSITORY     TAG       IMAGE ID       CREATED         SIZE
+dev-backend    latest    9794c77fbcb3   4 minutes ago   1.11GB
+dev-frontend   latest    bdd5cc0e9b9d   4 days ago      48.2MB
+postgres       13        d76feacfc4a6   2 months ago    419MB
+´´´
+
 ## verificar o container
 
 ´´´bash
 docker ps -a
-CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS                  PORTS                    NAMES
-37c78355bd8d   dev-backend    "docker-entrypoint.s…"   53 seconds ago   Up 51 seconds           0.0.0.0:5000->5000/tcp   dev-backend-1
-eb4671831022   postgres:13    "docker-entrypoint.s…"   53 seconds ago   Up 52 seconds           0.0.0.0:5432->5432/tcp   dev-db-1
-ac0f87f86821   dev-frontend   "/docker-entrypoint.…"   6 minutes ago    Up 6 minutes            0.0.0.0:80->80/tcp       dev-frontend-1
-7172f93ca4df   36a179fcf2e8   "/docker-entrypoint.…"   4 days ago       Exited (0) 4 days ago                            amazing_bassi
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                    NAMES
+cabba55079b7   dev-backend    "docker-entrypoint.s…"   7 minutes ago   Up 6 minutes   0.0.0.0:5000->5000/tcp   dev-backend-1
+b776f91d010a   postgres:13    "docker-entrypoint.s…"   7 minutes ago   Up 6 minutes   0.0.0.0:5432->5432/tcp   dev-db-1
+8b59b1362972   dev-frontend   "/docker-entrypoint.…"   7 minutes ago   Up 6 minutes   0.0.0.0:80->80/tcp       dev-frontend-1
 ´´´
 
 ## Acessar pelo browser
 
 http://localhost
 
+## Criando a tabela manualmente no banco
+
+´´´bash
+docker run -it --rm --network container:b776f91d010a postgres:13 psql -h db -U horadoqa -d horadoqa
+Password for user horadoqa: 1q2w...
+´´´
+
+```bash
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    telefone VARCHAR(15)
+  );
+
+CREATE TABLE
+```
+
+## Listar as tabelas criadas
+
+```bash
+\dt
+          List of relations
+ Schema |   Name   | Type  |  Owner   
+--------+----------+-------+----------
+ public | usuarios | table | postgres
+(1 row)
+```
+
+## listar as colunas da tabela
+
+```bash
+\d usuarios
+```
+
+## Listar todos os registros
+
+```bash
+SELECT * FROM usuarios;
+ id | name | email | telefone 
+----+------+-------+----------
+(0 rows)
+```
+
+Preencher os dados no site: http://localhost
+
+Dados enviados com sucesso!
+
+backend-1   | Dados recebidos: {
+backend-1   |   name: 'Ricardo Fahham',
+backend-1   |   email: 'rfahham@hotmail.com',
+backend-1   |   telefone: '21980025474'
+backend-1   | }
+backend-1   | Dados recebidos: {
+backend-1   |   name: 'Alessandra Miranda',
+backend-1   |   email: 'alesmiranda@hotmail.com',
+backend-1   |   telefone: '21981836521'
+backend-1   | }
+
+```bash
+SELECT * FROM usuarios;
+ id |        name        |          email          |  telefone   
+----+--------------------+-------------------------+-------------
+  1 | Ricardo Fahham     | rfahham@hotmail.com     | 21980025474
+  2 | Alessandra Miranda | alesmiranda@hotmail.com | 21981836521
+(2 rows)
+```
+
+## Verificar se o healthcheck está respondendo
+
+´´´bash
+✗ curl -I http://localhost:5000/healthcheck
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 10
+ETag: W/"a-/pJpnCGd2a5qaFT/HIH61Dgm78o"
+Date: Mon, 07 Oct 2024 22:06:03 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+´´´
+
 ## Verificar Logs dos Contêineres
 
 ´´´bash
 docker logs dev-backend-1
-
 Servidor rodando em http://localhost:5000
+Erro ao conectar ao banco de dados: Error: connect ECONNREFUSED 172.18.0.2:5432
+    at /app/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -111,
+  code: 'ECONNREFUSED',
+  syscall: 'connect',
+  address: '172.18.0.2',
+  port: 5432
+}
+Servidor rodando em http://localhost:5000
+Conectado ao banco de dados com sucesso
 Dados recebidos: {
-  name: 'Ricardo',
+  name: 'Ricardo Fahham',
   email: 'rfahham@hotmail.com',
   telefone: '21980025474'
 }
-Erro ao inserir no banco: password authentication failed for user "postgres"
+Erro ao inserir no banco: relation "usuarios" does not exist
+Dados recebidos: {
+  name: 'Ricardo Fahham',
+  email: 'rfahham@hotmail.com',
+  telefone: '21980025474'
+}
+Dados recebidos: {
+  name: 'Alessandra Miranda',
+  email: 'alesmiranda@hotmail.com',
+  telefone: '21981836521'
+}
 ´´´
+
+## Verificando os logs do Banco de Dados
 
 ´´´bash
 docker logs dev-db-1
 ´´´
 
-## Testar Conectividade entre os Contêineres
-
-### Acessar o container do FE
+## Rota dos usuários
 
 ´´´bash
-docker exec -it <CONTAINER ID> bash
-´´´
-
-### BE => Banco
-
-Acessar o container do FE
-
-´´´bash
-docker exec -it <CONTAINER ID> bash
-
-docker exec -it dev-backend-1 /bin/sh
-docker exec -it dev-backend-1 /bin/bash
-´´´
-(dependendo da imagem que você está usando, o shell pode ser sh ou bash).
-
-
-´´´bash
-curl -X POST http://54.174.75.247:5000/api/cadastro -H "Content-Type: application/json" -d '{"name": "Nome", "email": "email@example.com", "telefone": "1234567890"}'
-´´´
-
-## Acessando o container do Banco de Dados
-
-´´´bash
-docker exec -it dev-db-1 psql -U postgres -W horadoqa
-´´´
-
-docker exec -it dev-db-1 psql -h localhost -U postgres -d horadoqa
-
-
-## ERROR
-
-Failed to load resource: the server responded with a status of 500 (Internal Server Error)
-
-App.js:32 Erro ao enviar dados
-
-Utilize o IP do Contêiner
-
-## Pegar o IP do container
-
-´´´bash
-docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <CONTAINER ID>
-´´´
-
-## Acessando o banco 
-
-´´´bash
-docker run -it --rm --network container:<CONTAINER ID> postgres:13 psql -h db -U horadoqa -d horadoqa
-Password for user horadoqa: 1q2w...
+curl http://localhost:5000/api/usuarios | jq
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   269  100   269    0     0  30299      0 --:--:-- --:--:-- --:--:-- 33625
+[
+  {
+    "id": 1,
+    "name": "test exemplo",
+    "email": "test@exemplo.com",
+    "telefone": "219876543210"
+  },
+  {
+    "id": 2,
+    "name": "Hora do QA",
+    "email": "horadoqa@gmail.com",
+    "telefone": "219876543210"
+  }
+]
 ´´´

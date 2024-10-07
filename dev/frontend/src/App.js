@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import './App.css';
 import logo from './images/hqa.png';
 import axios from 'axios';
-import Usuarios from './Usuarios'; // O novo componente
+import Usuarios from './Usuarios';
 
 function Formulario() {
   const [name, setName] = useState('');
