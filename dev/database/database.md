@@ -22,3 +22,13 @@ npx sequelize-cli init
 ```bash
 npx sequelize-cli db:migrate
 ```
+
+Executar o migrations de dentro do container do dev-backend
+
+```bash
+docker exec -it <CONTAINER ID> /bin/sh
+
+npm install sequelize sequelize-cli pg pg-hstore
+
+npx sequelize-cli db:migrate
+```

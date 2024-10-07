@@ -16,6 +16,10 @@ const pool = new Pool({
   port: 5432,
 });
 
+pool.connect()
+  .then(() => console.log('Conectado ao banco de dados com sucesso'))
+  .catch(err => console.error('Erro ao conectar ao banco de dados:', err));
+
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
@@ -36,6 +40,11 @@ app.post('/api/cadastro', async (req, res) => {
     console.error('Erro ao inserir no banco:', error.message); // Log do erro
     res.status(500).send('Erro ao criar usuário');
   }
+});
+
+// Rota para o healthcheck
+app.get('/healthcheck', (req, res) => {
+  res.send('WORKING...');
 });
 
 // Rota para listar os usuários
