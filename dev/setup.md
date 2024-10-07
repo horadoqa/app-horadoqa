@@ -4,18 +4,25 @@
 
 ´´´bash
 cd dev/frontend
-
-docker-compose up --build
-docker-compose up -d
 ´´´
 
 ´´´bash
 docker compose up -d
 
- ✔ Container dev-frontend-1  Running   0.0s 
- ✔ Container dev-db-1        Started   1.6s 
- ✔ Container dev-backend-1   Started   7.1s  
+ ✔ Container dev-frontend-1   Started   0.8s 
+ ✔ Container dev-db-1         Started   0.8s 
+ ✔ Container dev-backend-1    Started   1.0s
 ´´´
+
+## docker compose build
+
+Quando realizar alguma alteração no Dockerfile ou nos arquivos que afetam as dependências da imagem e deseja garantir que as últimas mudanças sejam aplicadas.
+
+´´´bash
+docker-compose up --build
+´´´
+
+## Listar as imagens
 
 ´´´bash
 docker images
@@ -184,3 +191,16 @@ curl http://localhost:5000/api/usuarios | jq
   }
 ]
 ´´´
+
+## Stopar conatiners
+
+´´´bash
+docker stop <CONTAINER ID>
+´´´
+
+## Apagar imagens
+
+´´´bash
+docker rmi <IMAGE ID> -f
+´´´
+
