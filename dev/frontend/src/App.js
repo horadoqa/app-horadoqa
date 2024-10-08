@@ -94,7 +94,6 @@ function App() {
           <Route path="/usuarios" element={<Usuarios />} />
         </Routes>
 
-
       </div>
     </Router>
   );

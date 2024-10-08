@@ -129,6 +129,21 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 ´´´
 
+## Verificar se a página da lista de usuários está respondendo
+
+´´´bash
+curl -I http://localhost/usuarios  
+HTTP/1.1 200 OK
+Server: nginx/1.27.2
+Date: Tue, 08 Oct 2024 00:24:32 GMT
+Content-Type: text/html
+Content-Length: 549
+Last-Modified: Tue, 08 Oct 2024 00:11:42 GMT
+Connection: keep-alive
+ETag: "670478be-225"
+Accept-Ranges: bytes
+´´´
+
 ## Verificar Logs dos Contêineres
 
 ´´´bash
@@ -183,6 +198,19 @@ curl http://localhost:5000/api/usuarios | jq
     "telefone": "219876543210"
   }
 ]
+´´´
+
+## Para remover um registro de uma tabela no PostgreSQL pelo ID, você pode usar o seguinte comando SQL:
+
+
+´´´bash
+DELETE FROM nome_da_tabela WHERE id = valor_do_id;
+´´´
+
+Por exemplo, se você tiver uma tabela chamada usuarios e quiser remover um usuário com o ID 1, o comando seria:
+
+´´´bash
+DELETE FROM usuarios WHERE id = 1;
 ´´´
 
 ## Stopar conatiners

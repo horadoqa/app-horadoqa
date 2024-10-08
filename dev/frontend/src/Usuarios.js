@@ -7,7 +7,7 @@ const Usuarios = () => {
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/usuarios'); // Altere para a URL correta da API
+        const response = await axios.get('http://localhost:5000/api/usuarios'); // Use o nome do serviço se estiver em Docker
         setUsuarios(response.data);
       } catch (error) {
         console.error('Erro ao buscar usuários:', error);
@@ -27,20 +27,21 @@ const Usuarios = () => {
             <th>Email</th>
             <th>Telefone</th>
           </tr>
-          <tr>
-            <th>Ricardo Fahham</th>
-            <th>rfahham@hotmail.com</th>
-            <th>21 98002-5474</th>
-          </tr>
         </thead>
         <tbody>
-          {usuarios.map((usuario) => (
-            <tr key={usuario.id}>
-              <td>{usuario.name}</td>
-              <td>{usuario.email}</td>
-              <td>{usuario.telefone}</td>
+          {usuarios.length > 0 ? (
+            usuarios.map((usuario) => (
+              <tr key={usuario.id}>
+                <td>{usuario.name}</td>
+                <td>{usuario.email}</td>
+                <td>{usuario.telefone}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="3">Nenhum usuário cadastrado.</td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>
