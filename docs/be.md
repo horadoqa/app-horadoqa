@@ -17,3 +17,8 @@ npm init -y
 npm install express pg cors body-parser
 ```
 
+Inicie o backend: No diretório do seu backend, execute:
+
+```bash
+node server.js
+```

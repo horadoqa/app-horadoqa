@@ -20,3 +20,9 @@ Você pode usar o axios para fazer requisições HTTP. Instale-o no seu projeto 
 ```bash
 npm install axios
 ```
+
+Inicie o frontend: No diretório do seu frontend, execute:
+
+```bash
+npm start
+```

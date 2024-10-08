@@ -231,3 +231,31 @@ docker rm <CONTAINER ID>
 docker rmi <IMAGE ID> -f
 ´´´
 
+## DOCKER HUB
+
+´´´bash
+docker login
+docker tag dev-frontend horadoqa/dev-frontend:latest
+docker tag dev-backend horadoqa/dev-backend:latest
+
+docker push horadoqa/dev-frontend:latest
+docker push horadoqa/dev-backend:latest
+´´´
+
+## Exportar o Banco de Dados
+
+´´´bash
+docker exec -t dev-db-1 pg_dumpall -c -U horadoqa > database/backup.sql
+´´´
+
+docker build -t horadoqa/postgres-com-backup .
+
+## Executar com variáveis de ambiente
+
+docker run -e POSTGRES_USER=horadoqa -e POSTGRES_PASSWORD=1q2w3e4r -e POSTGRES_DB=horadoqa postgres:13
+
+## Copiar o banco local para o remoto
+
+Criar um DOKCKERFILE na pasta database
+
+COPY backup.sql /docker-entrypoint-initdb.d/

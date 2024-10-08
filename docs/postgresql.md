@@ -170,4 +170,4 @@ SELECT * FROM usuarios;
 DROP TABLE IF EXISTS usuarios;
 ```
 
-curl -X POST http://54.174.75.247:5000/api/cadastro -H "Content-Type: application/json" -d '{"name": "Nome", "email": "email@example.com", "telefone": "1234567890"}'
+curl -X POST http://localhost:5000/api/cadastro -H "Content-Type: application/json" -d '{"name": "Nome", "email": "email@example.com", "telefone": "1234567890"}'
