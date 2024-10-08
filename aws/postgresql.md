@@ -1,5 +1,9 @@
 # POSTGRESQL
 
+Criar banco RDS na AWS
+
+
+
 ## Verificar a conexão do BE com o Banco
 
 Conectar-se à Instância usando SSM
