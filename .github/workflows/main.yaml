@@ -20,20 +20,12 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Create images
-        run: docker compose up -d
-      
-      - name: Tag images
+      - name: Build Docker images
         run: |
-          docker tag dev-frontend horadoqa/dev-frontend:latest
-          docker tag dev-backend horadoqa/dev-backend:latest
+          docker build -t horadoqa/dev-frontend:latest ./dev/frontend 
+          docker build -t horadoqa/dev-backend:latest ./dev/backend
 
-      - name: Build Docker image
-        run: |
-          docker build -t horadoqa/dev-frontend:latest .
-          docker build -t horadoqa/dev-backend:latest .
-
-      - name: Push Docker image
+      - name: Push Docker images
         run: |
           docker push horadoqa/dev-frontend:latest
           docker push horadoqa/dev-backend:latest
