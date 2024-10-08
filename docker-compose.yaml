@@ -1,14 +1,14 @@
 services:
   frontend:
     build:
-      context: ./frontend
+      context: ./dev/frontend
       dockerfile: Dockerfile
     ports:
       - "80:80"
   
   backend:
     build:
-      context: ./backend
+      context: ./dev/backend
       dockerfile: Dockerfile
     environment:
       - DATABASE_URL=postgres://horadoqa:1q2w3e4r@db:5432/horadoqa

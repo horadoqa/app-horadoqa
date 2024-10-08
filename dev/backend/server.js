@@ -54,7 +54,7 @@ app.get('/api/usuarios', async (req, res) => {
     res.json(result.rows);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Erro ao buscar usuários');
+    res.status(500).send('Erro ao buscar usuários, verifique se o banco foi criado...');
   }
 });
 
