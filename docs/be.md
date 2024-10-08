@@ -14,7 +14,7 @@ npm init -y
 - **body-parser:** para analisar os dados do corpo das requisições.
 
 ```bash
-npm install express pg cors body-parser
+npm install express pg cors body-parser dotenv
 ```
 
 Inicie o backend: No diretório do seu backend, execute:

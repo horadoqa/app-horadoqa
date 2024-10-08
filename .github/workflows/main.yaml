@@ -22,8 +22,10 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t horadoqa/horadoqa-backend:v1.0.0 ./frontend
+          docker tag dev-frontend horadoqa/dev-frontend:latest
+          docker tag dev-backend horadoqa/dev-backend:latest
 
       - name: Push Docker image
         run: |
-          docker push horadoqa/horadoqa-backend:v1.0.0
+          docker push horadoqa/dev-frontend:latest
+          docker push horadoqa/dev-backend:latest

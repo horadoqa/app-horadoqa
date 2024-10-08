@@ -50,7 +50,7 @@ http://localhost
 
 ´´´bash
 docker run -it --rm --network container:b776f91d010a postgres:13 psql -h db -U horadoqa -d horadoqa
-Password for user horadoqa: 1q2w...
+Password for user horadoqa: senha
 ´´´
 
 ```bash
@@ -94,24 +94,12 @@ Preencher os dados no site: http://localhost
 
 Dados enviados com sucesso!
 
-backend-1   | Dados recebidos: {
-backend-1   |   name: 'Ricardo Fahham',
-backend-1   |   email: 'rfahham@hotmail.com',
-backend-1   |   telefone: '21980025474'
-backend-1   | }
-backend-1   | Dados recebidos: {
-backend-1   |   name: 'Alessandra Miranda',
-backend-1   |   email: 'alesmiranda@hotmail.com',
-backend-1   |   telefone: '21981836521'
-backend-1   | }
-
 ```bash
 SELECT * FROM usuarios;
- id |        name        |          email          |  telefone   
-----+--------------------+-------------------------+-------------
-  1 | Ricardo Fahham     | rfahham@hotmail.com     | 21980025474
-  2 | Alessandra Miranda | alesmiranda@hotmail.com | 21981836521
-(2 rows)
+ id |    name    |       email        |   telefone   
+----+------------+--------------------+--------------
+  1 | Hora do QA | horadoqa@gmail.com | 219876543210
+(1 row)
 ```
 
 ## Verificar se o healthcheck está respondendo
@@ -150,20 +138,7 @@ Accept-Ranges: bytes
 docker logs dev-backend-1
 
 Servidor rodando em http://localhost:5000
-Erro ao conectar ao banco de dados: Error: connect ECONNREFUSED 172.18.0.3:5432
-    at /app/node_modules/pg-pool/index.js:45:11
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  errno: -111,
-  code: 'ECONNREFUSED',
-  syscall: 'connect',
-  address: '172.18.0.3',
-  port: 5432
-}
-Dados recebidos: {
-  name: 'Hora do QA',
-  email: 'horadoqa@gmail.com',
-  telefone: '219876543210'
-}
+
 Dados recebidos: {
   name: 'Hora do QA',
   email: 'horadoqa@gmail.com',
@@ -190,18 +165,11 @@ curl http://localhost:5000/api/usuarios | jq
     "name": "Hora do QA",
     "email": "horadoqa@gmail.com",
     "telefone": "219876543210"
-  },
-  {
-    "id": 2,
-    "name": "Hora do QA",
-    "email": "horadoqa@gmail.com",
-    "telefone": "219876543210"
   }
 ]
 ´´´
 
 ## Para remover um registro de uma tabela no PostgreSQL pelo ID, você pode usar o seguinte comando SQL:
-
 
 ´´´bash
 DELETE FROM nome_da_tabela WHERE id = valor_do_id;
@@ -252,7 +220,9 @@ docker build -t horadoqa/postgres-com-backup .
 
 ## Executar com variáveis de ambiente
 
-docker run -e POSTGRES_USER=horadoqa -e POSTGRES_PASSWORD=1q2w3e4r -e POSTGRES_DB=horadoqa postgres:13
+´´´bash
+docker run -e POSTGRES_USER=horadoqa -e POSTGRES_PASSWORD=senha -e POSTGRES_DB=horadoqa postgres:13
+´´´
 
 ## Copiar o banco local para o remoto
 

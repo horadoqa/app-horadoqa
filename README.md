@@ -6,7 +6,8 @@ Página de cadastro que obtem os dados (nome completo, e-mail e telefone) e salv
 
 <div align="center">
 
-![Cadastro](./images/cadastro.png)
+  <img src="./images/cadastro.png" alt="Cadastro" style="display:inline-block; margin-right: 10px;" />
+  <img src="./images/sucesso.png" alt="Sucesso" style="display:inline-block;" />
 
 </div>
 
