@@ -3,6 +3,7 @@ services:
     build:
       context: ./dev/frontend
       dockerfile: Dockerfile
+    image: app-horadoqa-frontend:1.0.0 # Se não especificar entra como latest
     ports:
       - "80:80"
   
@@ -10,8 +11,9 @@ services:
     build:
       context: ./dev/backend
       dockerfile: Dockerfile
+    image: app-horadoqa-backend:1.0.0 # Se não especificar entra como latest
     environment:
-      - DATABASE_URL=postgres://horadoqa:senha@db:5432/horadoqa
+      - DATABASE_URL=postgres://horadoqa:1q2w3e4r@db:5432/horadoqa
     ports:
       - "5000:5000"
     depends_on:
@@ -21,7 +23,7 @@ services:
     image: postgres:13
     environment:
       POSTGRES_USER: horadoqa
-      POSTGRES_PASSWORD: "senha"
+      POSTGRES_PASSWORD: 1q2w3e4r
       POSTGRES_DB: horadoqa
     ports:
       - "5432:5432"
