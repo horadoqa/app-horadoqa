@@ -32,4 +32,24 @@ O endpoint http://localhost/usuarios atendeu:
 
 O endpoint http://localhost/usuarios atendeu:
 
-- X requests/seg com X tempo de resposta
+- 6.542 requests/seg com 1.1ms tempo de resposta
+
+  ✓ status was 200
+
+     checks.........................: 100.00% 981317 out of 981317
+     data_received..................: 772 MB  5.1 MB/s
+     data_sent......................: 81 MB   543 kB/s
+     http_req_blocked...............: avg=5.29µs  min=1.2µs      med=3.7µs    max=12.1ms  p(90)=5.1µs    p(95)=6.2µs   
+     http_req_connecting............: avg=216ns   min=0s         med=0s       max=3.34ms  p(90)=0s       p(95)=0s      
+     http_req_duration..............: avg=1.1ms   min=-1481835ns med=909.47µs max=75.69ms p(90)=1.79ms   p(95)=2.28ms  
+       { expected_response:true }...: avg=1.1ms   min=-1481835ns med=909.47µs max=75.69ms p(90)=1.79ms   p(95)=2.28ms  
+     http_req_failed................: 0.00%   0 out of 981317
+     http_req_receiving.............: avg=92.32µs min=-2281300ns med=39µs     max=38.93ms p(90)=173.01µs p(95)=377.43µs
+     http_req_sending...............: avg=14.53µs min=-1987233ns med=10.3µs   max=10.39ms p(90)=15.7µs   p(95)=30.2µs  
+     http_req_tls_handshaking.......: avg=0s      min=0s         med=0s       max=0s      p(90)=0s       p(95)=0s      
+     http_req_waiting...............: avg=1ms     min=0s         med=817.06µs max=75.64ms p(90)=1.63ms   p(95)=2.08ms  
+     http_reqs......................: 981317  6542.606277/s
+     iteration_duration.............: avg=1.22ms  min=235.71µs   med=1.02ms   max=75.79ms p(90)=1.94ms   p(95)=2.44ms  
+     iterations.....................: 981317  6542.606277/s
+     vus............................: 1       min=1                max=10
+     vus_max........................: 10      min=10               max=10
