@@ -22,10 +22,10 @@ jobs:
 
       - name: Build Docker images
         run: |
-          docker build -t horadoqa/dev-frontend:latest ./dev/frontend 
-          docker build -t horadoqa/dev-backend:latest ./dev/backend
+          docker build -t horadoqa/dev-frontend:1.0.0 ./dev/frontend 
+          docker build -t horadoqa/dev-backend:1.0.0 ./dev/backend
 
       - name: Push Docker images
         run: |
-          docker push horadoqa/dev-frontend:latest
-          docker push horadoqa/dev-backend:latest
+          docker push horadoqa/dev-frontend:1.0.0
+          docker push horadoqa/dev-backend:1.0.0

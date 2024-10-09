@@ -11,7 +11,7 @@ services:
       context: ./dev/backend
       dockerfile: Dockerfile
     environment:
-      - DATABASE_URL=postgres://horadoqa:1q2w3e4r@db:5432/horadoqa
+      - DATABASE_URL=postgres://horadoqa:senha@db:5432/horadoqa
     ports:
       - "5000:5000"
     depends_on:
@@ -21,7 +21,7 @@ services:
     image: postgres:13
     environment:
       POSTGRES_USER: horadoqa
-      POSTGRES_PASSWORD: 1q2w3e4r
+      POSTGRES_PASSWORD: "senha"
       POSTGRES_DB: horadoqa
     ports:
       - "5432:5432"

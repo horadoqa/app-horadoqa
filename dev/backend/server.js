@@ -12,7 +12,7 @@ const pool = new Pool({
   user: 'horadoqa',
   host: 'db',
   database: 'horadoqa',
-  password: '1q2w3e4r',
+  password: 'senha',
   port: 5432,
 });
 
