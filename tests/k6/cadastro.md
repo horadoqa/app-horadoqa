@@ -1,0 +1,33 @@
+# CADASTRO
+
+## O teste de CADASTRO com k6 sem cache
+
+O endpoint http://localhost/ atendeu:
+
+- 7.729 requests/seg com 933.48µs tempo de resposta
+
+✓ status was 200
+
+     checks.........................: 100.00% 1159387 out of 1159387
+     data_received..................: 912 MB  6.1 MB/s
+     data_sent......................: 87 MB   580 kB/s
+     http_req_blocked...............: avg=4.61µs   min=1.2µs     med=3.3µs    max=3.36ms  p(90)=4.4µs   p(95)=5.4µs 
+     http_req_connecting............: avg=185ns    min=0s        med=0s       max=3.22ms  p(90)=0s      p(95)=0s    
+     http_req_duration..............: avg=933.48µs min=54.5µs    med=780.7µs  max=47.51ms p(90)=1.49ms  p(95)=1.87ms
+       { expected_response:true }...: avg=933.48µs min=54.5µs    med=780.7µs  max=47.51ms p(90)=1.49ms  p(95)=1.87ms
+     http_req_failed................: 0.00%   0 out of 1159387
+     http_req_receiving.............: avg=80.29µs  min=-375759ns med=34.4µs   max=29.56ms p(90)=154.5µs p(95)=328µs 
+     http_req_sending...............: avg=12.61µs  min=3.3µs     med=9.1µs    max=10.15ms p(90)=13.3µs  p(95)=26.3µs
+     http_req_tls_handshaking.......: avg=0s       min=0s        med=0s       max=0s      p(90)=0s      p(95)=0s    
+     http_req_waiting...............: avg=840.57µs min=0s        med=700.75µs max=44.32ms p(90)=1.35ms  p(95)=1.7ms 
+     http_reqs......................: 1159387 7729.217368/s
+     iteration_duration.............: avg=1.03ms   min=248.2µs   med=878.41µs max=47.82ms p(90)=1.61ms  p(95)=2.01ms
+     iterations.....................: 1159387 7729.217368/s
+     vus............................: 1       min=1                  max=10
+     vus_max........................: 10      min=10                 max=10
+
+## O teste de API com k6 com cache
+
+O endpoint http://localhost/ atendeu:
+
+- X requests/seg com X tempo de resposta
