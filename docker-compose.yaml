@@ -6,7 +6,9 @@ services:
     image: app-horadoqa-frontend:1.0.1
     ports:
       - "80:80"
-  
+    depends_on:
+      - backend
+
   backend:
     build:
       context: ./dev/backend
@@ -14,10 +16,12 @@ services:
     image: app-horadoqa-backend:1.0.1
     environment:
       - DATABASE_URL=postgres://horadoqa:1q2w3e4r@db:5432/horadoqa
+      - REDIS_URL=redis://redis:6379
     ports:
       - "5000:5000"
     depends_on:
       - db
+      - redis
 
   db:
     image: postgres:13
@@ -29,6 +33,11 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7.4.1
+    ports:
+      - "6379:6379"
 
 volumes:
   pgdata:
