@@ -28,10 +28,9 @@ curl -X POST http://54.174.75.247:5000/api/cadastro -H "Content-Type: applicatio
 ## Acessando o container do Banco de Dados
 
 ´´´bash
-docker exec -it dev-db-1 psql -U postgres -W horadoqa
+docker exec -it app-horadoqa-db-1 psql -U horadoqa -d horadoqa
 ´´´
 
-docker exec -it dev-db-1 psql -h localhost -U postgres -d horadoqa
 
 
 ## ERROR

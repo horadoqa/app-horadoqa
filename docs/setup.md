@@ -46,7 +46,29 @@ b776f91d010a   postgres:13    "docker-entrypoint.s…"   7 minutes ago   Up 6 mi
 
 http://localhost
 
+
+## Verificar se o banco foi criado
+
+´´´bash
+docker exec -it app-horadoqa-db-1 psql -U horadoqa -l
+                                 List of databases
+   Name    |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges   
+-----------+----------+----------+------------+------------+-----------------------
+ horadoqa  | horadoqa | UTF8     | en_US.utf8 | en_US.utf8 | 
+ postgres  | horadoqa | UTF8     | en_US.utf8 | en_US.utf8 | 
+ template0 | horadoqa | UTF8     | en_US.utf8 | en_US.utf8 | =c/horadoqa          +
+           |          |          |            |            | horadoqa=CTc/horadoqa
+ template1 | horadoqa | UTF8     | en_US.utf8 | en_US.utf8 | =c/horadoqa          +
+           |          |          |            |            | horadoqa=CTc/horadoqa
+(4 rows)
+´´´
+
+
 ## Criando a tabela manualmente no banco
+
+docker exec -it app-horadoqa-db-1 psql -U horadoqa -d horadoqa
+
+
 
 ´´´bash
 docker run -it --rm --network container:b776f91d010a postgres:13 psql -h db -U horadoqa -d horadoqa
