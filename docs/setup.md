@@ -64,6 +64,12 @@ CREATE TABLE usuarios (
 CREATE TABLE
 ```
 
+## Inserir dados na tabela
+
+```bash
+INSERT INTO usuarios (name, email, telefone) VALUES ('Hora do QA', 'horadoqa@gmail.com', '219876543210');
+```
+
 ## Listar as tabelas criadas
 
 ```bash
@@ -89,6 +95,8 @@ SELECT * FROM usuarios;
 ----+------+-------+----------
 (0 rows)
 ```
+
+
 
 Preencher os dados no site: http://localhost
 
