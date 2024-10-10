@@ -3,7 +3,9 @@
 # dependencies
 dev/backend/node_modules
 dev/frontend/node_modules
-dev/database/node_modules
+prod/backend/node_modules
+prod/frontend/node_modules
+
 */node_modules
 /.pnp
 .pnp.js
@@ -20,11 +22,11 @@ dev/database/node_modules
 .env.development.local
 .env.test.local
 .env.production.local
+/dev/.env
+/prod/.env
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 /aws/infra/.terraform*
-
-.env
