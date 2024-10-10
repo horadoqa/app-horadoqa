@@ -30,4 +30,24 @@ O endpoint http://localhost:5000/api/usuarios atendeu:
 
 O endpoint http://localhost:5000/api/usuarios atendeu:
 
-- X requests/seg com X tempo de resposta
+- 1.915 requests/seg com 4.1ms tempo de resposta
+
+  ✓ status was 200
+
+     checks.........................: 100.00% 287242 out of 287242
+     data_received..................: 155 MB  1.0 MB/s
+     data_sent......................: 26 MB   176 kB/s
+     http_req_blocked...............: avg=4.27µs  min=1.4µs      med=3.8µs  max=4.3ms    p(90)=5.4µs    p(95)=6.1µs   
+     http_req_connecting............: avg=5ns     min=0s         med=0s     max=307.52µs p(90)=0s       p(95)=0s      
+     http_req_duration..............: avg=4.1ms   min=249.27µs   med=4.08ms max=65.39ms  p(90)=5.6ms    p(95)=6.29ms  
+       { expected_response:true }...: avg=4.1ms   min=249.27µs   med=4.08ms max=65.39ms  p(90)=5.6ms    p(95)=6.29ms  
+     http_req_failed................: 0.00%   0 out of 287242
+     http_req_receiving.............: avg=73.6µs  min=-2587882ns med=71.7µs max=8.06ms   p(90)=106.41µs p(95)=118.81µs
+     http_req_sending...............: avg=13.48µs min=4.1µs      med=10.3µs max=4.52ms   p(90)=24.7µs   p(95)=35.7µs  
+     http_req_tls_handshaking.......: avg=0s      min=0s         med=0s     max=0s       p(90)=0s       p(95)=0s      
+     http_req_waiting...............: avg=4.01ms  min=197.57µs   med=4ms    max=65.35ms  p(90)=5.5ms    p(95)=6.18ms  
+     http_reqs......................: 287242  1915.091159/s
+     iteration_duration.............: avg=4.21ms  min=921.47µs   med=4.18ms max=65.48ms  p(90)=5.73ms   p(95)=6.42ms  
+     iterations.....................: 287242  1915.091159/s
+     vus............................: 1       min=1                max=10
+     vus_max........................: 10      min=10               max=10

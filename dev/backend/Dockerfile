@@ -1,9 +1,8 @@
 # Usar a imagem oficial do Node.js
 FROM node:18
 
-# Definir o diretório de trabalho
-# Usar a imagem oficial do Node.js
-FROM node:18
+# Instalar redis-tools
+RUN apt-get update && apt-get install -y redis-tools
 
 # Definir o diretório de trabalho
 WORKDIR /app

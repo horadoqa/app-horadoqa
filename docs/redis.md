@@ -13,7 +13,8 @@ sudo systemctl start redis
 redis-cli                    
 127.0.0.1:6379> ping
 PONG
-127.0.0.1:6379> 
+127.0.0.1:6379>
+exi
 ```
 
 

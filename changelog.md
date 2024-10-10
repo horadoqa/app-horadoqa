@@ -1,5 +1,21 @@
 # Changelog
 
+**[Versão 1.0.1] - 09/10/2024**
+
+ Adicionado
+- Implementação do REDIS
+
+Alterado
+- O código do BE - setup.js
+
+Corrigido
+- Código do setup.js com Redis
+
+Removido
+- Sem alterações
+
+___
+
 **[Versão 1.0.0] - 09/10/2024**
 
  Adicionado
