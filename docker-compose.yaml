@@ -33,6 +33,7 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+      # - ./initdb:/docker-entrypoint-initdb.d # Criar a tabela no banco de dados
 
   redis:
     image: redis:7.4.1
