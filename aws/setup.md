@@ -2,31 +2,21 @@
 
 Projeto: APP-HORADOQA
 
+Criar role-ssm-horadoqa e dicionar permissões:
+
+- AmazonEC2ContainerRegistryFullAccess
+- AmazonEC2FullAccess
+- AmazonSSMManagedInstanceCore
+
+Criar a instância com 16 GB utilizando a role
+
 Acessar o CloudShell na AWS
 
 ## Clonar o projeto
 
 ```bash
-git clone git@github.com:horadoqa/app-horadoqa.git
+git clone https://github.com/horadoqa/app-horadoqa.git
 ```
-
-## Acessar diretório dos scripts
-
-```bash
-cd aws/scripts
-```
-
-## Executar o script para criação da role ssm
-
-```bash
-./criar_role_ssm.sh
-```
-
-## Adicionar permissões para o role-acesso-ssm
-
-- AmazonEC2ContainerRegistryFullAccess
-- AmazonEC2FullAccess
-- AmazonSSMManagedInstanceCore
 
 ## Verificar acesso
 
@@ -36,6 +26,18 @@ aws ecr describe-repositories
 {
     "repositories": []
 }
+```
+
+Mudar para o usuário ec2-user
+
+```bash
+sudo su ec2-user
+```
+
+Acessar a home
+
+```bash
+cd /home/ec2-user
 ```
 
 ## Criar Security-Group
@@ -85,23 +87,8 @@ Basic details
         Intervalo de portas:
         Description:
 
-## Validar recursos da Zona A
 
-```bash
-./validar_recursos_zona_a.sh
 
-[OK] Tudo certo com a VPC
-[OK] Tudo certo com a Subnet
-[OK] Security Group app-horadoqa foi criado
- [OK] Regra de entrada está ok
- [OK] Regra de saída está correta
-[OK] Tudo certo com a role 'role-acesso-ssm'
-```
-
-## Criar a instância via script
-```bash
-./lancar_ec2_zona_a.sh
-```
 
 ## Acessar a instância via SSM
 
