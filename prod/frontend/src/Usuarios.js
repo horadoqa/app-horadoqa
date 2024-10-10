@@ -7,7 +7,7 @@ const Usuarios = () => {
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/usuarios'); // Use o nome do serviço se estiver em Docker
+        const response = await axios.get(`http://localhost:5000/api/usuarios`); // Use o nome do serviço se estiver em Docker
         setUsuarios(response.data);
       } catch (error) {
         console.error('Erro ao buscar usuários:', error);

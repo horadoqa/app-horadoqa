@@ -8,7 +8,6 @@ const app = express();
 const port = process.env.PORT || 5000;
 const ip = process.env.BACKEND_URL || '0.0.0.0';
 
-// Configurar o Pool do PostgreSQL
 const pool = new Pool({
   user: process.env.DB_USER || 'horadoqa',
   host: 'db',
@@ -24,7 +23,6 @@ pool.connect()
     process.exit(1);
   });
 
-// Configurar o cliente Redis
 const redisClient = createClient({
   url: process.env.REDIS_URL || 'redis://localhost:6379',
 });
@@ -48,11 +46,9 @@ const connectToRedis = async () => {
 
 connectToRedis();
 
-// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// Rota para receber dados do formulário
 app.post('/api/cadastro', async (req, res) => {
   const { name, email, telefone } = req.body;
 
@@ -64,7 +60,6 @@ app.post('/api/cadastro', async (req, res) => {
       [name, email, telefone]
     );
 
-    // Limpar o cache de usuários após a inserção
     await redisClient.del('usuarios_cache');
 
     res.status(201).send('Usuário criado com sucesso !!!');
@@ -82,23 +77,13 @@ app.get('/healthcheck', (req, res) => {
 // Rota para listar os usuários
 app.get('/api/usuarios', async (req, res) => {
   try {
-    // Tentar obter os dados do cache
     const cachedData = await redisClient.get('usuarios_cache');
 
     if (cachedData) {
-      // Se houver dados em cache, retornar os dados
-      const now = new Date();
-      const formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
-      console.log(`Dados retornados do cache em ${formattedDate}`);
-
       return res.json(JSON.parse(cachedData));
     } else {
-      // Caso contrário, buscar no banco de dados
       const result = await pool.query('SELECT * FROM usuarios');
-
-      // Armazenar no cache por 60 segundos
       await redisClient.setEx('usuarios_cache', 60, JSON.stringify(result.rows));
-
       res.json(result.rows);
     }
   } catch (error) {
@@ -118,7 +103,6 @@ app.delete('/api/usuarios/:id', async (req, res) => {
       return res.status(404).send('Usuário não encontrado');
     }
 
-    // Limpar o cache de usuários após a deleção
     await redisClient.del('usuarios_cache');
 
     res.send('Usuário deletado com sucesso !!!');
