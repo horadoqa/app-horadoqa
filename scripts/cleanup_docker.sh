@@ -18,8 +18,8 @@ echo "Limpeza concluída!"
 echo "------------------------------"
 
 # Remover Todos os Recursos (Containers, Imagens, Volumes)
-echo "Removendo Containers, Imagens e Volumes"
-docker system prune -y
+# echo "Removendo Containers, Imagens e Volumes"
+# docker system prune
 
 
 # docker stop $(docker ps -q)
