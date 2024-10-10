@@ -1,0 +1,45 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: app-horadoqa-frontend:1.0.1
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_BACKEND_URL=${BACKEND_URL}
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: app-horadoqa-backend:1.0.1
+    environment:
+      - DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DATABASE}
+      - REDIS_URL=redis://redis:6379
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: horadoqa
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: horadoqa
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7.4.1
+    ports:
+      - "6379:6379"
+
+volumes:
+  pgdata:
