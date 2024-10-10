@@ -2,15 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { Pool } = require('pg');
-const { createClient } = require('redis'); // Importação do cliente Redis
+const { createClient } = require('redis');
 
 const app = express();
-const port = 5000;
-const ip = "localhost";
+const port = process.env.PORT || 5000;
+const ip = process.env.BACKEND_URL || '0.0.0.0';
 
 // Configurar o Pool do PostgreSQL
 const pool = new Pool({
-  user: 'horadoqa',
+  user: process.env.DB_USER || 'horadoqa',
   host: 'db',
   database: 'horadoqa',
   password: '1q2w3e4r',
@@ -19,11 +19,14 @@ const pool = new Pool({
 
 pool.connect()
   .then(() => console.log('Conectado ao banco de dados com sucesso'))
-  .catch(err => console.error('Erro ao conectar ao banco de dados:', err));
+  .catch(err => {
+    console.error('Erro ao conectar ao banco de dados:', err);
+    process.exit(1);
+  });
 
 // Configurar o cliente Redis
 const redisClient = createClient({
-  url: process.env.REDIS_URL
+  url: process.env.REDIS_URL || 'redis://localhost:6379',
 });
 
 redisClient.on('error', (err) => {
@@ -38,7 +41,7 @@ const connectToRedis = async () => {
       break;
     } catch (err) {
       console.error('Erro ao conectar ao Redis. Tentando novamente...', err);
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Espera 1 segundo antes de tentar novamente
+      await new Promise(resolve => setTimeout(resolve, 1000));
     }
   }
 };
@@ -53,7 +56,7 @@ app.use(bodyParser.json());
 app.post('/api/cadastro', async (req, res) => {
   const { name, email, telefone } = req.body;
 
-  console.log('Dados recebidos:', req.body); // Log dos dados recebidos
+  console.log('Dados recebidos:', req.body);
 
   try {
     await pool.query(
@@ -66,7 +69,7 @@ app.post('/api/cadastro', async (req, res) => {
 
     res.status(201).send('Usuário criado com sucesso !!!');
   } catch (error) {
-    console.error('Erro ao inserir no banco:', error.message); // Log do erro
+    console.error('Erro ao inserir no banco:', error.message);
     res.status(500).send('Erro ao criar usuário');
   }
 });
@@ -120,10 +123,18 @@ app.delete('/api/usuarios/:id', async (req, res) => {
 
     res.send('Usuário deletado com sucesso !!!');
   } catch (error) {
-    console.error('Erro ao deletar usuário:', error.message); // Log do erro
+    console.error('Erro ao deletar usuário:', error.message);
     res.status(500).send('Erro ao deletar usuário');
   }
 });
+
+// Middleware para tratamento de erros
+const errorHandler = (err, req, res, next) => {
+  console.error(err.message);
+  res.status(500).send('Erro interno do servidor');
+};
+
+app.use(errorHandler);
 
 // Iniciar o servidor
 app.listen(port, () => {
