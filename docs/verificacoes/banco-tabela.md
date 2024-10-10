@@ -1,10 +1,21 @@
 # Verificando o banco e a tabela do PostgreSQL
 
+## Listar os containers em execução
+
 ```bash
-docker exec -it app-horadoqa-db-1 psql -U horadoqa -d horadoqa
+docker ps -a
 ```
 
-Crie a tabela
+## Acessar o container do banco de dados
+
+```bash
+docker exec -it app-horadoqa-db-1 psql -U horadoqa -d horadoqa
+docker exec -it dev-db-1 psql -U horadoqa -d horadoqa
+
+docker-compose exec db psql -U horadoqa -d horadoqa
+```
+
+## Crie a tabela
 
 ```bash
 CREATE TABLE usuarios (
@@ -15,7 +26,7 @@ CREATE TABLE usuarios (
 );
 ```
 
-Verifique se a tabela foi criada
+## Verifique se a tabela foi criada
 
 ```bash
 \dt
