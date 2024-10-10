@@ -12,17 +12,17 @@ else
   echo ">[ERRO] Tenho um problema ao retornar a subnet da zona a. Será se existe uma subnet na zona A?"
 fi
 
-security_group_id=$(aws ec2 describe-security-groups --group-names "horadoqa" --query "SecurityGroups[0].GroupId" --output text 2>/dev/null)
+security_group_id=$(aws ec2 describe-security-groups --group-names "horadoqa-dev" --query "SecurityGroups[0].GroupId" --output text 2>/dev/null)
 if [ $? -eq 0 ]; then
   echo "[OK] Security Group horadoqa foi criado"
   
   # Validar inbound rule para o security group 'horadoqa'
-  inbound_rule=$(aws ec2 describe-security-groups --group-ids $security_group_id --filters "Name=ip-permission.from-port,Values=3001" --filters "Name=ip-permission.cidr,Values=0.0.0.0/0" --output text)
+  inbound_rule=$(aws ec2 describe-security-groups --group-ids $security_group_id --filters "Name=ip-permission.from-port,Values=80" --filters "Name=ip-permission.cidr,Values=0.0.0.0/0" --output text)
 
   if [ -n "$inbound_rule" ]; then
     echo " [OK] Regra de entrada está ok"
   else
-    echo " >[ERRO] Regra de entrada para a porta 3001 não encontrada ou não está aberta para o mundo todo. Reveja a aula do Henrylle"
+    echo " >[ERRO] Regra de entrada para a porta 3001 não encontrada ou não está aberta para o mundo todo."
   fi
 
   # Validar outbound rule para o security group 'horadoqa'
@@ -34,7 +34,7 @@ if [ $? -eq 0 ]; then
     echo " >[ERRO] Regra de saída para o mundo não encontrada."
   fi
 else
-  echo ">[ERRO] Não achei o security group horadoqa. Ele foi criado?"
+  echo ">[ERRO] Não achei o security group horadoqa-dev. Ele foi criado?"
 fi
 
 if aws iam get-role --role-name role-acesso-ssm &>/dev/null; then

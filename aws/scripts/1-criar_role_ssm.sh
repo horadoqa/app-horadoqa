@@ -7,6 +7,7 @@ if aws iam get-role --role-name "$role_name" &> /dev/null; then
 fi
 
 aws iam create-role --role-name $role_name --assume-role-policy-document file://ec2_principal.json
+
 # Cria o perfil de instância
 aws iam create-instance-profile --instance-profile-name $role_name
 
