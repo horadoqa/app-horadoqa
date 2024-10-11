@@ -6,7 +6,7 @@ const { createClient } = require('redis');
 
 const app = express();
 const port = process.env.PORT || 5000;
-const ip = process.env.BACKEND_URL || '0.0.0.0';
+const ip = '0.0.0.0';
 
 const pool = new Pool({
   user: process.env.DB_USER || 'horadoqa',

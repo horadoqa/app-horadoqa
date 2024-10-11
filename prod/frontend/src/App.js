@@ -10,7 +10,7 @@ function Formulario() {
   const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
   const [message, setMessage] = useState({ text: '', type: '' });
-  const ip = "localhost";
+  const ip = "0.0.0.0";
   
   const handleSubmit = async (event) => {
     event.preventDefault();
