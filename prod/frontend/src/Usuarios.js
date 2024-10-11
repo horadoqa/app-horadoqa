@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const ip = "0.0.0.0";
+
 const Usuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
 
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
-        const response = await axios.get(`http://0.0.0.0:5000/api/usuarios`); // Use o nome do serviço se estiver em Docker
+        const response = await axios.get(`http://${ip}:5000/api/usuarios`); // Use o nome do serviço se estiver em Docker
         setUsuarios(response.data);
       } catch (error) {
         console.error('Erro ao buscar usuários:', error);

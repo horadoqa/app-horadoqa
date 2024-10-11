@@ -6,6 +6,7 @@ sudo yum install git -y
 sudo yum install docker -y
 sudo usermod -a -G docker ec2-user
 sudo usermod -a -G docker ssm-user
+sudo usermod -aG docker $USER
 id ec2-user ssm-user
 sudo newgrp docker
 
@@ -30,3 +31,5 @@ sudo echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
 #Instalar node e npm
 curl -fsSL https://rpm.nodesource.com/setup_21.x | sudo bash -
 sudo yum install -y nodejs
+
+echo "Instalações realizadas com sucesso !!!"

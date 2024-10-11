@@ -9,6 +9,9 @@ docker ps -a
 ## Acessar o container do banco de dados
 
 ```bash
+docker exec -it prod-db-1 psql -U horadoqa -d horadoqa
+
+
 docker exec -it app-horadoqa-db-1 psql -U horadoqa -d horadoqa
 docker exec -it dev-db-1 psql -U horadoqa -d horadoqa
 

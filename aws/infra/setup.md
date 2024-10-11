@@ -59,4 +59,22 @@ git clone https://github.com/horadoqa/app-horadoqa.git
 
 cd app-horadoqa/prod
 
+# Lista o Instance ID
+instance_id=$(aws ec2 describe-instances --query "Reservations[*].Instances[*].InstanceId" --output text --profile horadoqa-dev | head -n 1)
+
+# pega o IP Público da instância
+ip=$(aws ec2 describe-instances --instance-ids ${instance_id} --query "Reservations[*].Instances[*].PublicIpAddress" --output text --profile horadoqa-dev)
+
 docker compose up -d
+
+
+
+instance-id = i-056d6e0777af6c878
+
+aws ec2 describe-instances --instance-ids ${instance-id} --query "Reservations[*].Instances[*].PublicIpAddress" --output text
+
+ip = aws ec2 describe-instances --instance-ids i-056d6e0777af6c878 --query "Reservations[*].Instances[*].PublicIpAddress" --output text --profile horadoqa-dev
+
+Se você deseja listar o IP público de todas as instâncias, pode usar:
+
+aws ec2 describe-instances --query "Reservations[*].Instances[*].[InstanceId, PublicIpAddress]" --output table --profile horadoqa-dev

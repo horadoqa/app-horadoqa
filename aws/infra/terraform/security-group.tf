@@ -1,6 +1,6 @@
 resource "aws_security_group" "securitygroup" {
-  name        = "securitygroup"
-  description = "Permitir acesso HTTP e acesso para a Internet"
+  name        = "horadoqa-dev"
+  description = "Allow HTTP, SSH, and internet access"
 
   ingress {
     from_port   = 80
@@ -10,16 +10,16 @@ resource "aws_security_group" "securitygroup" {
   }
 
   ingress {
-    from_port   = 22
-    to_port     = 22
+    from_port   = 5000
+    to_port     = 5000
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
     from_port   = 0
-    to_port     = 65535
-    protocol    = "tcp"
+    to_port     = 0
+    protocol    = "-1"  # Permite todo o tráfego
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
