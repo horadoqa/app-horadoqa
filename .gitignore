@@ -22,11 +22,11 @@ prod/frontend/node_modules
 .env.development.local
 .env.test.local
 .env.production.local
-/dev/.env
 /prod/.env
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+/aws/infra/terraform/.terraform*
 /aws/infra/.terraform*
