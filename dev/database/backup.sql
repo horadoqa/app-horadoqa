@@ -1,161 +1,9 @@
 --
--- PostgreSQL database cluster dump
---
-
-SET default_transaction_read_only = off;
-
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-
---
--- Drop databases (except postgres and template1)
---
-
-DROP DATABASE horadoqa;
-
-
-
-
---
--- Drop roles
---
-
-DROP ROLE horadoqa;
-
-
---
--- Roles
---
-
-CREATE ROLE horadoqa;
-ALTER ROLE horadoqa WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS PASSWORD 'md5ae800a43951b5982e715fadc244dae43';
-
-
-
-
-
-
---
--- Databases
---
-
---
--- Database "template1" dump
---
-
---
 -- PostgreSQL database dump
 --
 
 -- Dumped from database version 13.16 (Debian 13.16-1.pgdg120+1)
 -- Dumped by pg_dump version 13.16 (Debian 13.16-1.pgdg120+1)
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
-UPDATE pg_catalog.pg_database SET datistemplate = false WHERE datname = 'template1';
-DROP DATABASE template1;
---
--- Name: template1; Type: DATABASE; Schema: -; Owner: horadoqa
---
-
-CREATE DATABASE template1 WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.utf8';
-
-
-ALTER DATABASE template1 OWNER TO horadoqa;
-
-\connect template1
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
---
--- Name: DATABASE template1; Type: COMMENT; Schema: -; Owner: horadoqa
---
-
-COMMENT ON DATABASE template1 IS 'default template for new databases';
-
-
---
--- Name: template1; Type: DATABASE PROPERTIES; Schema: -; Owner: horadoqa
---
-
-ALTER DATABASE template1 IS_TEMPLATE = true;
-
-
-\connect template1
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
---
--- Name: DATABASE template1; Type: ACL; Schema: -; Owner: horadoqa
---
-
-REVOKE CONNECT,TEMPORARY ON DATABASE template1 FROM PUBLIC;
-GRANT CONNECT ON DATABASE template1 TO PUBLIC;
-
-
---
--- PostgreSQL database dump complete
---
-
---
--- Database "horadoqa" dump
---
-
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 13.16 (Debian 13.16-1.pgdg120+1)
--- Dumped by pg_dump version 13.16 (Debian 13.16-1.pgdg120+1)
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
---
--- Name: horadoqa; Type: DATABASE; Schema: -; Owner: horadoqa
---
-
-CREATE DATABASE horadoqa WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.utf8';
-
-
-ALTER DATABASE horadoqa OWNER TO horadoqa;
-
-\connect horadoqa
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -178,9 +26,9 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.usuarios (
     id integer NOT NULL,
-    name character varying(100),
-    email character varying(100),
-    telefone character varying(15)
+    name character varying(100) NOT NULL,
+    email character varying(100) NOT NULL,
+    telefone character varying(15) NOT NULL
 );
 
 
@@ -220,7 +68,27 @@ ALTER TABLE ONLY public.usuarios ALTER COLUMN id SET DEFAULT nextval('public.usu
 --
 
 COPY public.usuarios (id, name, email, telefone) FROM stdin;
-1	Hora do QA	horadoqa@gmail.com	219876543210
+78	Hora do QA	horadoqa@gmail.com	219876543210
+79	Carlos Almeida	carlos.almeida@email.com	(11) 91234-0001
+80	Fernanda Lima	fernanda.lima@email.com	(21) 91234-0002
+81	Gustavo Martins	gustavo.martins@email.com	(31) 91234-0003
+82	Juliana Ribeiro	juliana.ribeiro@email.com	(41) 91234-0004
+83	Lucas Costa	lucas.costa@email.com	(51) 91234-0005
+84	Mariana Souza	mariana.souza@email.com	(61) 91234-0006
+85	Nicolas Oliveira	nicolas.oliveira@email.com	(71) 91234-0007
+86	Patrícia Mendes	patricia.mendes@email.com	(81) 91234-0008
+87	Renato Pires	renato.pires@email.com	(91) 91234-0009
+88	Sofia Ferreira	sofia.ferreira@email.com	(11) 91234-0010
+89	Tiago Ramos	tiago.ramos@email.com	(21) 91234-0011
+90	Vanessa Silva	vanessa.silva@email.com	(31) 91234-0012
+91	William Andrade	william.andrade@email.com	(41) 91234-0013
+92	Yasmin Rocha	yasmin.rocha@email.com	(51) 91234-0014
+93	Zé Carlos	ze.carlos@email.com	(61) 91234-0015
+94	Aline Cardoso	aline.cardoso@email.com	(71) 91234-0016
+95	Beto Lima	beto.lima@email.com	(81) 91234-0017
+96	Cláudia Torres	claudia.torres@email.com	(91) 91234-0018
+97	Eduardo Silva	eduardo.silva@email.com	(11) 91234-0019
+98	Flávia Gomes	flavia.gomes@email.com	(21) 91234-0020
 \.
 
 
@@ -228,7 +96,15 @@ COPY public.usuarios (id, name, email, telefone) FROM stdin;
 -- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: horadoqa
 --
 
-SELECT pg_catalog.setval('public.usuarios_id_seq', 6, true);
+SELECT pg_catalog.setval('public.usuarios_id_seq', 98, true);
+
+
+--
+-- Name: usuarios usuarios_email_key; Type: CONSTRAINT; Schema: public; Owner: horadoqa
+--
+
+ALTER TABLE ONLY public.usuarios
+    ADD CONSTRAINT usuarios_email_key UNIQUE (email);
 
 
 --
@@ -241,65 +117,5 @@ ALTER TABLE ONLY public.usuarios
 
 --
 -- PostgreSQL database dump complete
---
-
---
--- Database "postgres" dump
---
-
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 13.16 (Debian 13.16-1.pgdg120+1)
--- Dumped by pg_dump version 13.16 (Debian 13.16-1.pgdg120+1)
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
-DROP DATABASE postgres;
---
--- Name: postgres; Type: DATABASE; Schema: -; Owner: horadoqa
---
-
-CREATE DATABASE postgres WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.utf8';
-
-
-ALTER DATABASE postgres OWNER TO horadoqa;
-
-\connect postgres
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
---
--- Name: DATABASE postgres; Type: COMMENT; Schema: -; Owner: horadoqa
---
-
-COMMENT ON DATABASE postgres IS 'default administrative connection database';
-
-
---
--- PostgreSQL database dump complete
---
-
---
--- PostgreSQL database cluster dump complete
 --
 

@@ -10,10 +10,10 @@ docker ps -a
 
 ```bash
 docker exec -it prod-db-1 psql -U horadoqa -d horadoqa
+docker exec -it dev-db-1 psql -U horadoqa -d horadoqa
 
 
 docker exec -it app-horadoqa-db-1 psql -U horadoqa -d horadoqa
-docker exec -it dev-db-1 psql -U horadoqa -d horadoqa
 
 docker-compose exec db psql -U horadoqa -d horadoqa
 ```
@@ -46,4 +46,18 @@ SELECT * FROM usuarios;
 
 docker exec -it app-horadoqa-db-1 /bin/bash
 psql -U horadoqa -d horadoqa
+SELECT * FROM usuarios
+
+Apagar a tabela usuarios
+
+Acessar o banco 
+
+docker exec -it dev-db-1 psql -U horadoqa -d horadoqa
+
+DROP TABLE usuarios;
+DROP TABLE
+
 SELECT * FROM usuarios;
+ERROR:  relation "usuarios" does not exist
+LINE 1: SELECT * FROM usuarios;
+

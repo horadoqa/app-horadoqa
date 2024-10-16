@@ -25,12 +25,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now'), // Define o valor padrão como a data/hora atual
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now'), // Define o valor padrão como a data/hora atual
-      },
+      }
     });
   },
 
